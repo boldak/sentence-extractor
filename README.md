@@ -40,7 +40,7 @@ extractSentences(ukText)
 
 ```
 
-The result of extracting sentences in 4 nesting levels is shown below
+The result of extracting sentences in 5 nesting levels is shown below
 ```json
 {
  "type": "text",
