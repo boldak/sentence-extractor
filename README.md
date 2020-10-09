@@ -6,8 +6,24 @@ Rule based sentence extraction from text
 npm i --save boldak/sentence-extractor
 ```
 
-## How to use
-
+## How to
+### Tokenize text
+```js
+console.log(
+	JSON.stringify(
+		require("sentence-extractor")
+			.tokenize(
+		`Юрист зазначив, що 9-11 серпня в Білорусі вперше були застосовані деякі види озброєння і спецтехніки. 
+Тільки в Мінську за перші 3 дні після виборів за медичною допомогою звернулися понад 1200 осіб.`
+			)
+	)
+)
+```
+The result of tokenizing is shown below
+```json
+["Юрист"," ","зазначив",","," ","що"," ","9","-","11"," ","серпня"," ","в"," ","Білорусі"," ","вперше"," ","були"," ","застосовані"," ","деякі"," ","види"," ","озброєння"," ","і"," ","спецтехніки","."," ","\n","Тільки"," ","в"," ","Мінську"," ","за"," ","перші"," ","3"," ","дні"," ","після"," ","виборів"," ","за"," ","медичною"," ","допомогою"," ","звернулися"," ","понад"," ","1200"," ","осіб","."]
+```
+### Extract sentences
 ```js
 let extractSentences = require("sentence-extractor").extractSentences
 
@@ -24,7 +40,7 @@ extractSentences(ukText)
 
 ```
 
-The result of extracting sentences in 4 nesting levels is shown below
+The result of extracting sentences in 5 nesting levels is shown below
 ```json
 {
  "type": "text",
@@ -336,3 +352,8 @@ The result of extracting sentences in 4 nesting levels is shown below
 }
 
 ``` 
+
+## TODOs
+- Add dictionaries of dot terminated abbreviations for russian and english
+- Add ```lang``` argument in sentences extraction
+- Add tests
