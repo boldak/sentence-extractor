@@ -336,3 +336,7 @@ The result of extracting sentences in 4 nesting levels is shown below
 }
 
 ``` 
+
+## TODOs
+- Add dictionaries of dot terminated abbreviations for russian and english.
+- Add ```lang``` argument in sentences extraction
