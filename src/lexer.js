@@ -3,7 +3,7 @@ let _  =require("lodash-node")
 let t = require("./raw_tokenizer_uk")
 let parse = require("./parser")
 let grammar = require("./grammar")
-
+let uuid = require('uuid').v4
 
 module.exports = sample => {
     
@@ -24,6 +24,7 @@ module.exports = sample => {
             
             startOfText: item => { 
                 text = {
+                    id: uuid(),
                     type: "text",
                     childs:[]
                 }
@@ -31,6 +32,7 @@ module.exports = sample => {
             
             startOfParagraph: item => {
                 p = {
+                    id: uuid(),
                     type: "paragraph",
                     childs:[]
                 }
@@ -38,6 +40,7 @@ module.exports = sample => {
             
             startOfSentence: item => { 
                 s = {
+                    id: uuid(),
                     type: "sentence",
                     childs:[]
                 }
@@ -46,6 +49,7 @@ module.exports = sample => {
             
             startOfSubSentence: item => { 
                 ss = {
+                    id: uuid(),
                     type: "subSentence",
                     childs:[]
                 }
@@ -53,7 +57,8 @@ module.exports = sample => {
             },
             
             word: item => {
-                ss.childs.push({
+                    ss.childs.push({
+                    id: uuid(),
                     type:"word",
                     value: item.value
                 })
@@ -61,6 +66,7 @@ module.exports = sample => {
                 
             number: item => {
                 ss.childs.push({
+                    id: uuid(),
                     type:"number",
                     value: item.value
                 })
@@ -68,6 +74,7 @@ module.exports = sample => {
 
             date: item => {
                 ss.childs.push({
+                    id: uuid(),
                     type:"date",
                     value: item.value
                 })
@@ -75,6 +82,7 @@ module.exports = sample => {
 
             time: item => {
                 ss.childs.push({
+                    id: uuid(),
                     type:"time",
                     value: item.value
                 })
@@ -104,11 +112,13 @@ module.exports = sample => {
             whitespace: item => {
                 if(item.labels.indexOf("punctuation")>=0){
                     s.childs.push({
+                        id: uuid(),
                         type:"punctuation",
                         value: item.value
                     })
                 } else {
                     ss.childs.push({
+                        id: uuid(),
                         type: "whitespace",
                         value: item.value
                     })  

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/boldak/sentence-extractor#readme",
   "dependencies": {
-    "lodash-node": "^3.10.2"
+    "lodash-node": "^3.10.2",
+    "uuid": "^8.3.1"
   }
 }
